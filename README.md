@@ -6,7 +6,8 @@ It was tested only with kube 1.6
 
 ## How it works
 
-We start 2 watchers for configmaps and secrets
+We start 2 watchers for configmaps and secrets.
+
 When something is received by the watcher, we retrieve all resources that use
 that configmap or secret
 
@@ -25,4 +26,5 @@ Solutions:
 * or try to implement something like kubernetes does: delete a pod, wait to be up again, go to next pod
 
 TBD:
-* Annotations should be aplpied only for stable resources: all desired replicas == current replicas
+* Annotations should be applied only for stable resources: all desired replicas == current replicas
+* Move opsguru.signature/should_update from metadata.annotations to spec.template.metadata.annotations
