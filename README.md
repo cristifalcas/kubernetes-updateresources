@@ -4,7 +4,7 @@ It has minimal testing
 
 It was tested only with kube 1.6
 
-##How it works##
+## How it works
 
 We start 2 watchers for configmaps and secrets
 When something is received by the watcher, we retrieve all resources that use
