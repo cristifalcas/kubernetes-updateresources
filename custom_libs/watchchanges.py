@@ -59,7 +59,7 @@ class threadWatchChanges (threading.Thread):
     def get_resources_using_obj(self, obj):
         """
         We receive an object that has been modified
-        For each controller type, get all volumes/env values andcheck if it's the received object
+        For each controller type, get all volumes/env values and check if it's the received object
         StatefulSets can't be patched, so we ignore them
 
         Assumption:
@@ -147,7 +147,6 @@ class threadWatchChanges (threading.Thread):
         if str(annotation_ver) == str(obj.metadata.resource_version):
             return
 
-        self.log.info("Version differ %s:%s" % (annotation_ver, obj.metadata.resource_version))
         self.log.info("Send for update %s %s/%s by %s/%s" % (kind, res.metadata.namespace, res.metadata.name, obj.kind, obj.metadata.name))
         item = {
                 'res_name': res.metadata.name,

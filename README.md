@@ -27,3 +27,5 @@ Updating rollingupdates for ReplicationControllers and StatefulSets is not imple
 We don't manage them yet.
 
 If controllers are edited with our signature after we start and they use the existing cm/secrets, we don't notice.
+
+On the very first run, all pods are restarted because we need to insert our annotations

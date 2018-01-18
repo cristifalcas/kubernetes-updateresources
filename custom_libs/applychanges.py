@@ -9,9 +9,9 @@ class threadApplyChanges (threading.Thread):
         For each controller that needs updated, write a custom annotation
         and maybe restart the necessary pods
 
-        Receives a queue wiht what needs updating
-        
-        A thread is spawn for the update function
+        Receives a queue with what needs updating
+
+        Main run thread is the only worker. Another thread is spawn for the update function.
         The main class thread and the update thread both use for_update dict
         to write/delete, so a lock is used to ensure they don't step on each other toes
         """
@@ -67,9 +67,9 @@ class threadApplyChanges (threading.Thread):
         while True:
             try:
                 item = self.q.get()
-                kind = item['res_kind']
 
                 if self.should_update(item):
+                    kind = item['res_kind']
                     key_res = item['res_namespace'] + "/" + item['res_name']
                     key_ann = self.ann.get_annotation(item['cfg_kind'], item['cfg_name'])
                     self.log.info("Needs update: %s %s by %s" % (kind, key_res, item['cfg_kind'] + '/' + item['cfg_name']))
