@@ -1,0 +1,5 @@
+*.log
+*~
+spec/fixtures/*
+*.tmp
+*.pyc
